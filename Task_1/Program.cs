@@ -4,34 +4,22 @@
 //12821 -> да
 //23432 -> да
 
- int Prompt(string message)
-  {
-      Console.Write(message);
-      string value = Console.ReadLine();
-     return Convert.ToInt32(value);
-  }
-
- bool GetPolindrom(int number)
- {
-    string numberStr = number.ToString(); 
-
-     for(int i=0;i<numberStr.Length/2;i++)
-        {
-          
-             if(numberStr[i] != numberStr[numberStr.Length - i -1])
-                return false;
-          
-        }
-    
- return true;
- }   
-
-
-int number = Prompt("введите число: ");
-
-if (GetPolindrom(number))
+System.Console.WriteLine("Введите пятизначное число: ");
+string numberStr = Console.ReadLine();
+string GetPolindrom(string number)
 {
-    Console.WriteLine("Это полиндром");
+    int digits = numberStr.Length;
+    if (digits == 5)
+    {
+        if (numberStr[0] == numberStr[4] && numberStr[1] == numberStr[3])
+        {
+            return "Это полиндром";
+        }
+        else
+            return "Это не полиндром";
+    }
+    else
+        return "Введено неверное число. Введите пятизначное число:";
+
 }
-else
- Console.WriteLine("Это не полиндром");
+System.Console.WriteLine(GetPolindrom(numberStr));
